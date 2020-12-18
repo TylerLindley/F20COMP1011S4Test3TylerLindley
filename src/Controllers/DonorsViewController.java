@@ -4,6 +4,7 @@ package Controllers;
 import Models.BloodDonor;
 import Models.JsonFileResult;
 import Utilties.ReadingJSONFile;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
@@ -89,7 +90,6 @@ public class DonorsViewController implements Initializable {
         //add CheckBox objects to ArrayList for easier handling
         checkBoxes = Arrays.asList(aPosCheckBox,aNegCheckBox,abPosCheckBox,abNegCheckBox,
                 bPosCheckBox, bNegCheckBox, oPosCheckBox,oNegCheckBox);
-
         //Hardcoding the Graph data. If I have time I will make it dynamic
         bloodCountSeries = new XYChart.Series();
 
@@ -105,6 +105,7 @@ public class DonorsViewController implements Initializable {
         categoryAxis.setLabel("Blood Types (Alphabetically)");
         numberAxis.setLabel("Total Count");
         bloodCountSeries.setName("Number of Donors");
+
         try {
             BloodDonor[] allDonors = ReadingJSONFile.getDonors2().getBloodDonors();
             eligibleDonorListView.getItems().addAll(allDonors);
@@ -118,5 +119,9 @@ public class DonorsViewController implements Initializable {
         rowsReturnedLabel.setText("Rows Returned: " + eligibleDonorListView.getItems().size());
         eligibleDonorListView.refresh();
         dataUploadDateLabel.setText("Date Upload Date " + ReadingJSONFile.getDonors2().getDateGenerated());
+    }
+
+    public void eligibleDonors(ActionEvent actionEvent) {
+        //Deleted old not working code.
     }
 }
