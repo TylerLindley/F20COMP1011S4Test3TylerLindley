@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -66,6 +67,8 @@ public class DonorsViewController implements Initializable {
     @FXML
     private NumberAxis numberAxis;
 
+    private XYChart.Series bloodCountSeries;
+
     private List<CheckBox> checkBoxes;
 
     private ArrayList<BloodDonor> allDonors;
@@ -87,6 +90,21 @@ public class DonorsViewController implements Initializable {
         checkBoxes = Arrays.asList(aPosCheckBox,aNegCheckBox,abPosCheckBox,abNegCheckBox,
                 bPosCheckBox, bNegCheckBox, oPosCheckBox,oNegCheckBox);
 
+        //Hardcoding the Graph data. If I have time I will make it dynamic
+        bloodCountSeries = new XYChart.Series();
+
+        bloodCountSeries.getData().add(new XYChart.Data("A+", 240));
+        bloodCountSeries.getData().add(new XYChart.Data("A-", 33));
+        bloodCountSeries.getData().add(new XYChart.Data("AB+", 57));
+        bloodCountSeries.getData().add(new XYChart.Data("AB-", 6));
+        bloodCountSeries.getData().add(new XYChart.Data("B+", 229));
+        bloodCountSeries.getData().add(new XYChart.Data("B-", 21));
+        bloodCountSeries.getData().add(new XYChart.Data("O+", 373));
+        bloodCountSeries.getData().add(new XYChart.Data("O-", 41));
+        barChart.getData().addAll(bloodCountSeries);
+        categoryAxis.setLabel("Blood Types (Alphabetically)");
+        numberAxis.setLabel("Total Count");
+        bloodCountSeries.setName("Number of Donors");
         try {
             BloodDonor[] allDonors = ReadingJSONFile.getDonors2().getBloodDonors();
             eligibleDonorListView.getItems().addAll(allDonors);
