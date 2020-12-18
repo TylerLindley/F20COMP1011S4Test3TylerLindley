@@ -2,6 +2,8 @@
 package Controllers;
 
 import Models.BloodDonor;
+import Models.JsonFileResult;
+import Utilties.ReadingJSONFile;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
@@ -12,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -65,6 +68,8 @@ public class DonorsViewController implements Initializable {
 
     private List<CheckBox> checkBoxes;
 
+    private ArrayList<JsonFileResult> allDonors;
+
     @FXML
     private void checkBoxChanged()
     {
@@ -76,5 +81,19 @@ public class DonorsViewController implements Initializable {
         //add CheckBox objects to ArrayList for easier handling
         checkBoxes = Arrays.asList(aPosCheckBox,aNegCheckBox,abPosCheckBox,abNegCheckBox,
                 bPosCheckBox, bNegCheckBox, oPosCheckBox,oNegCheckBox);
+
+        try {
+            BloodDonor[] allDonors = ReadingJSONFile.getDonors2().getBloodDonors();
+            eligibleDonorListView.getItems().addAll(allDonors);
+            updateLabels();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateLabels() {
+        rowsReturnedLabel.setText("Rows Returned: " + eligibleDonorListView.getItems().size());
+        eligibleDonorListView.refresh();
+        dataUploadDateLabel.setText("Date Upload Date " + ReadingJSONFile.getDonors2().getDateGenerated());
     }
 }

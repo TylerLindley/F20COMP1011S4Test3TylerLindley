@@ -79,19 +79,11 @@ public class BloodDonor implements Comparable<BloodDonor> {
 
     @Override
     public int compareTo(BloodDonor o) {
-        return Integer.compare(this.getId(), o.getId());
+        return Integer.compare(getId(), o.getId());
     }
 
     @Override
     public String toString() {
-        return "BloodDonor{" +
-                "id=" + id +
-                ", gender='" + gender + '\'' +
-                ", first_Name='" + first_Name + '\'' +
-                ", last_Name='" + last_Name + '\'' +
-                ", bloodType='" + bloodType + '\'' +
-                ", telePhone='" + telePhone + '\'' +
-                ", donationDates=" + Arrays.toString(donationDates) +
-                '}';
+        return id + " " + first_Name + " " + last_Name + " " + bloodType;
     }
 }

@@ -29,4 +29,20 @@ public class ReadingJSONFile {
         }
         return donorArrayList;
     }
+
+    public static JsonFileResult getDonors2() {
+        JsonFileResult donors2 = null;
+        try(
+                FileReader fileReader = new FileReader("src/Utilties/donors.json");
+                JsonReader jsonReader = new JsonReader(fileReader);
+        )
+        {
+            Gson gson = new Gson();
+            donors2 = gson.fromJson(jsonReader, JsonFileResult.class);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return donors2;
+    }
 }
