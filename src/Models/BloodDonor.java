@@ -1,9 +1,24 @@
 //Tyler Lindley - 200382154
 package Models;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.Arrays;
+
 public class BloodDonor implements Comparable<BloodDonor> {
+    @SerializedName("Id")
     private int id;
-    private String gender, first_Name, last_Name, bloodType, telePhone;
+    @SerializedName("Gender")
+    private String gender;
+    @SerializedName("First_Name")
+    private String first_Name;
+    @SerializedName("Last_Name")
+    private String last_Name;
+    @SerializedName("BloodType")
+    private String bloodType;
+    @SerializedName("TelePhone")
+    private String telePhone;
+    @SerializedName("DonationDates")
     private String[] donationDates;
 
     public int getId() {
@@ -65,5 +80,18 @@ public class BloodDonor implements Comparable<BloodDonor> {
     @Override
     public int compareTo(BloodDonor o) {
         return Integer.compare(this.getId(), o.getId());
+    }
+
+    @Override
+    public String toString() {
+        return "BloodDonor{" +
+                "id=" + id +
+                ", gender='" + gender + '\'' +
+                ", first_Name='" + first_Name + '\'' +
+                ", last_Name='" + last_Name + '\'' +
+                ", bloodType='" + bloodType + '\'' +
+                ", telePhone='" + telePhone + '\'' +
+                ", donationDates=" + Arrays.toString(donationDates) +
+                '}';
     }
 }

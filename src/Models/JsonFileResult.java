@@ -1,8 +1,16 @@
 //Tyler Lindley - 200382154
 package Models;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.Arrays;
+
 public class JsonFileResult {
-    private String dateGenerated, examStatus;
+    @SerializedName("DateGenerated")
+    private String dateGenerated;
+    @SerializedName("ExamStatus")
+    private String examStatus;
+    @SerializedName("BloodDonors")
     private BloodDonor[] bloodDonors;
 
     public String getDateGenerated() {
@@ -27,5 +35,14 @@ public class JsonFileResult {
 
     public void setBloodDonors(BloodDonor[] bloodDonors) {
         this.bloodDonors = bloodDonors;
+    }
+
+    @Override
+    public String toString() {
+        return "JsonFileResult{" +
+                "dateGenerated='" + dateGenerated + '\'' +
+                ", examStatus='" + examStatus + '\'' +
+                ", bloodDonors=" + Arrays.toString(bloodDonors) +
+                '}';
     }
 }
