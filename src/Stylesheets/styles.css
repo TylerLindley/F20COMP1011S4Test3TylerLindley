@@ -1,0 +1,25 @@
+.root {
+    -fx-font-size: 12 px;
+    -fx-background-color: #96e7ec;
+}
+
+.check-box {
+    -fx-background-color: white;
+    -fx-font-weight: bold;
+
+}
+
+#dataUploadDateLabel
+{
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+}
+
+#rowsReturnedLabel
+{
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-border-width: 1px;
+    -fx-border-color: grey;
+    -fx-background-color: #f1f0f0;
+}
