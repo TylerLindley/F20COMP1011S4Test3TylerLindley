@@ -78,9 +78,6 @@ public class DonorsViewController implements Initializable {
     private void checkBoxChanged()
     {
         System.out.println("method 'checkBoxChanged()' was called");
-        /* allDonors.stream()
-                .filter(bloodDonor -> bloodDonor.getBloodType().contains("abNeg"))
-                .forEach(System.out::println); */ //Not working yet.
         eligibleDonorListView.refresh();
         updateLabels();
     }
@@ -107,7 +104,7 @@ public class DonorsViewController implements Initializable {
         bloodCountSeries.setName("Number of Donors");
 
         try {
-            BloodDonor[] allDonors = ReadingJSONFile.getDonors2().getBloodDonors();
+            BloodDonor[] allDonors = ReadingJSONFile.getDonorsAsObjects().getBloodDonors();
             eligibleDonorListView.getItems().addAll(allDonors);
             updateLabels();
         } catch (Exception e) {
@@ -118,10 +115,13 @@ public class DonorsViewController implements Initializable {
     private void updateLabels() {
         rowsReturnedLabel.setText("Rows Returned: " + eligibleDonorListView.getItems().size());
         eligibleDonorListView.refresh();
-        dataUploadDateLabel.setText("Date Upload Date " + ReadingJSONFile.getDonors2().getDateGenerated());
+        dataUploadDateLabel.setText("Date Upload Date " + ReadingJSONFile.getDonorsAsObjects().getDateGenerated());
     }
 
     public void eligibleDonors(ActionEvent actionEvent) {
-        //Deleted old not working code.
+        if(eligibleDonorCheckBox.isSelected()) {
+            eligibleDonorListView.refresh();
+            System.out.println("Users that have donated within 8 weeks have been taken out of the list view.");
+        }
     }
 }

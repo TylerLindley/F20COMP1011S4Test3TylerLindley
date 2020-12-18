@@ -19,12 +19,12 @@ public class Main extends Application {
     Image logo = new Image("/views/icon.png");
 
     public static void main(String[] args) {
-        /* ArrayList<JsonFileResult> donors = ReadingJSONFile.getDonors();
+        ArrayList<JsonFileResult> donors = ReadingJSONFile.getDonors();
 
-        Map<String, Long> bloodTypeCount = donors.stream()
-                .map(JsonFileResult:: getBloodType)
+        /* Map<String, Long> bloodTypeCount = donors.stream()
+                .map(JsonFileResult::getBloodType)
                 .collect(Collectors.groupingBy(Function.identity(),
-                        Collectors.counting())); */ //Not Working yet?
+                        Collectors.counting())); */ //Couldn't figure out this error.
 
         launch(args);
     }

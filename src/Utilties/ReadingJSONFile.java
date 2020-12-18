@@ -1,3 +1,4 @@
+//Tyler Lindley - 200382154
 package Utilties;
 
 import Models.JsonFileResult;
@@ -10,6 +11,7 @@ import java.util.Arrays;
 
 public class ReadingJSONFile {
 
+    //Used for streaming
     public static ArrayList<JsonFileResult> getDonors() {
         ArrayList<JsonFileResult> donorArrayList = new ArrayList<>();
 
@@ -29,8 +31,8 @@ public class ReadingJSONFile {
         }
         return donorArrayList;
     }
-
-    public static JsonFileResult getDonors2() {
+    //Used to display data to the List view.
+    public static JsonFileResult getDonorsAsObjects() {
         JsonFileResult donors2 = null;
         try(
                 FileReader fileReader = new FileReader("src/Utilties/donors.json");
