@@ -36,13 +36,4 @@ public class JsonFileResult {
     public void setBloodDonors(BloodDonor[] bloodDonors) {
         this.bloodDonors = bloodDonors;
     }
-
-    @Override
-    public String toString() {
-        return "JsonFileResult{" +
-                "dateGenerated='" + dateGenerated + '\'' +
-                ", examStatus='" + examStatus + '\'' +
-                ", bloodDonors=" + Arrays.toString(bloodDonors) +
-                '}';
-    }
 }

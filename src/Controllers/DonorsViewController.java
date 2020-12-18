@@ -68,12 +68,17 @@ public class DonorsViewController implements Initializable {
 
     private List<CheckBox> checkBoxes;
 
-    private ArrayList<JsonFileResult> allDonors;
+    private ArrayList<BloodDonor> allDonors;
 
     @FXML
     private void checkBoxChanged()
     {
         System.out.println("method 'checkBoxChanged()' was called");
+        /* allDonors.stream()
+                .filter(bloodDonor -> bloodDonor.getBloodType().contains("abNeg"))
+                .forEach(System.out::println); */ //Not working yet.
+        eligibleDonorListView.refresh();
+        updateLabels();
     }
 
     @Override
