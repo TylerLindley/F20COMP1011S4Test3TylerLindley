@@ -1,4 +1,6 @@
 //Tyler Lindley - 200382154
+import Models.BloodDonor;
+import Models.JsonFileResult;
 import Utilties.ReadingJSONFile;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,12 +9,23 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 public class Main extends Application {
     //Adding an icon to the GUI.
     Image logo = new Image("/views/icon.png");
 
     public static void main(String[] args) {
-        ReadingJSONFile.getDonors();
+        /* ArrayList<JsonFileResult> donors = ReadingJSONFile.getDonors();
+
+        Map<String, Long> bloodTypeCount = donors.stream()
+                .map(JsonFileResult:: getBloodType)
+                .collect(Collectors.groupingBy(Function.identity(),
+                        Collectors.counting())); */ //Not Working yet?
+
         launch(args);
     }
 
