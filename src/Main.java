@@ -8,9 +8,12 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    //Adding an icon to the GUI.
+    Image logo = new Image("/views/icon.png");
+
     public static void main(String[] args) {
         ReadingJSONFile.getDonors();
-        //launch(args);
+        launch(args);
     }
 
     @Override
@@ -18,6 +21,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("Views/donorsView.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.getIcons().add(logo);
+        stage.setTitle("Blood Donor List");
         stage.show();
     }
 }
